@@ -19,11 +19,28 @@ const MovieList = () => {
       .catch((error) => console.log(error));
   };
 
+  const [
+    areOnlyRecentMoviesDisplayed,
+    setAreOnlyRecentMoviesDisplayed,
+  ] = React.useState(false);
+
+  const recentMoviesHandler = () => {
+    setAreOnlyRecentMoviesDisplayed(!areOnlyRecentMoviesDisplayed);
+    console.log(areOnlyRecentMoviesDisplayed);
+  };
+
+  const filteredMovies = movies
+    .filter((movie) => {
+      return !areOnlyRecentMoviesDisplayed || movie.year > 2000;
+    })
+    .map((movie) => {
+      return <Movie {...movie} />;
+    });
+
   return (
     <div>
-      {movies.map((movie) => {
-        return <Movie {...movie} />;
-      })}
+      <button onClick={recentMoviesHandler}>Click me</button>
+      {filteredMovies}
     </div>
   );
 };
