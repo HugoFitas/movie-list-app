@@ -1,9 +1,10 @@
 import React from "react";
+import Movie from "./Movie";
 
 const MovieList = () => {
   return (
     <div>
-      <h1>MovieList</h1>
+      <Movie title="Harry Potter" year="2000" director="who knows" />
     </div>
   );
 };
