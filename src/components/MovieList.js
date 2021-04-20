@@ -1,10 +1,15 @@
 import React from "react";
 import Movie from "./Movie";
+import moviesData from "./Data.js";
 
 const MovieList = () => {
+  const [movies, setMovies] = React.useState(moviesData);
+
   return (
     <div>
-      <Movie title="Harry Potter" year="2000" director="who knows" />
+      {movies.map((movie) => {
+        return <Movie {...movie} />;
+      })}
     </div>
   );
 };
